@@ -48,4 +48,4 @@ In the second build stage, the same Node.js image from the first stage is used. 
 
 SvelteKit automatically opens port 3000, as documented here.
 
-Finally, the stage runs index.js from the build directory.
+Finally, NodeJS runs index.js from the build directory.
