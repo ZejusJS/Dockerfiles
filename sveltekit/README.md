@@ -25,7 +25,7 @@ RUN pnpm i
 Selecting working directory /app.
 Copying package.json and pnpm-lock.yaml into /app and then installing packages. If you are using npm, it should be package-lock.json.
 
-By copying only package.json and installing dependencies before copying the entire project, you can cache packages. This reduces installation time subsequently, as packages are only reinstalled when the list of dependencies in package.json changes.
+By copying only package.json and installing dependencies before copying the entire project, Docker can cache packages. This reduces installation time subsequently, as packages are only reinstalled when the list of dependencies in package.json changes.
 
 ```Dockerfile
 COPY . .
@@ -33,7 +33,7 @@ ENV NODE_ENV=production
 RUN npm run build
 ```
 
-This copies whole project to /app, set env variable NODE_ENV to "production", so the built app knows it's in production built and then running build process.
+This copies the entire project to the /app directory, sets the environment variable NODE_ENV to "production" (so the built application knows it's in production mode), and then runs the build process.
 
 ```Dockerfile
 FROM node:20.12.0-alpine3.19
