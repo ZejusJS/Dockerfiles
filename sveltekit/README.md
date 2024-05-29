@@ -29,7 +29,6 @@ By copying only package.json and installing dependencies before copying the enti
 
 ```Dockerfile
 COPY . .
-ENV NODE_ENV=production
 RUN npm run build
 ```
 
@@ -41,6 +40,9 @@ WORKDIR /app
 COPY --from=builder /app/build build/
 COPY package.json .
 EXPOSE 3000
+
+ENV NODE_ENV=production
+
 CMD ["node", "build"]
 ```
 
