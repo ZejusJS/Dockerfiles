@@ -3,7 +3,7 @@
 ## Dockerfile.1
 
 ```Dockerfile
-FROM node:20.12-alpine3.19 AS builder
+FROM node:20.12.2-alpine3.19 AS builder
 ```
 
 This line selecting NodeJS on Alpine. Alpine is very small and secure.
@@ -35,7 +35,7 @@ RUN npm run build
 This copies the entire project to the /app directory, and then runs the build process.
 
 ```Dockerfile
-FROM node:20.12.0-alpine3.19
+FROM node:20.12.2-alpine3.19
 WORKDIR /app
 COPY --from=builder /app/build build/
 COPY package.json .
