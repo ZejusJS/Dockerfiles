@@ -32,7 +32,7 @@ COPY . .
 RUN npm run build
 ```
 
-This copies the entire project to the /app directory, sets the environment variable NODE_ENV to "production" (so the built application knows it's in production mode), and then runs the build process.
+This copies the entire project to the /app directory, and then runs the build process.
 
 ```Dockerfile
 FROM node:20.12.0-alpine3.19
@@ -49,5 +49,8 @@ CMD ["node", "build"]
 In the second build stage, the same Node.js image from the first stage is used. This stage copies the built project from the first stage, excluding unnecessary files like node_modules.
 
 SvelteKit automatically opens port 3000, as documented here.
+
+It's important to remember that ENV variables set in Dockerfile are <b>runtime</b> variables (process.env.\<var>). This means that they must be set in the final stage where the aplication is started. 
+The variables stored in .env file in SvelteKit projects are used and set during build time.
 
 Finally, NodeJS runs index.js from the build directory.
